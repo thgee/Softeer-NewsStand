@@ -1,2 +1,2 @@
-import "./articleList.js";
-import "./rollingBar.js";
+import "./js/subNewsList.js";
+import "./js/todaysDate.js";

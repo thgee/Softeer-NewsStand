@@ -7,78 +7,142 @@
     <title>뉴스스탠드</title>
   </head>
   <body>
-    <div class="news-stand">
+    <div class="news-stand center surface-default">
+      <!-- 뉴스스탠드 헤더 -->
       <header class="flex-between">
-        <div class="flex-center gap-10">
-          <img src="components/Header/asset/headerLogo.svg" />
-          <h1 class="font-size-13">뉴스스탠드</h1>
+        <div class="flex-center gap-8">
+          <img src="./asset/icons/newspaper.svg" />
+          <h1 class="display-bold24 text-strong">뉴스스탠드</h1>
         </div>
-        <h2 class="text-default font-size-09">2023.02.10 금요일</h2>
+
+        <!-- 오늘 날짜 -->
+        <span class="text-default display-medium16 header-today-date"></span>
       </header>
 
+      <div class="space-24"></div>
+
       <main>
-        <section class="">
-          <div class="news-bar__item">
-            <div class="item-title">연합뉴스</div>
-            <div class="item-content" id="rolling1">
-              [1보] 김기현·안철수·천하람·황교안, 與전대 본경선 진출
+        <!-- 뉴스 바 -->
+        <section class="flex-between gap-8">
+          <div class="news-bar">
+            <div class="news-bar p-16 border-default surface-alt">
+              <span class="text-strong display-bold14 mr-16">연합뉴스</span>
+              <span class="text-default available-medium14">
+                [1보] 김기현·안철수·천하람·황교안, 與전대 본경선 진출
+              </span>
             </div>
           </div>
-          <div class="news-bar__item">
-            <div class="item-title">연합뉴스</div>
-            <div class="item-content" id="rolling2">
+          <div class="news-bar p-16 border-default surface-alt">
+            <span class="text-strong display-bold14 mr-16">연합뉴스</span>
+            <span class="text-default available-medium14">
               [1보] 김기현·안철수·천하람·황교안, 與전대 본경선 진출
-            </div>
+            </span>
           </div>
         </section>
 
-        <section class="news-list">
-          <header class="news-list__header">
-            <div class="news-list__header-group1">
-              <div class="news-list__header-total">전체 언론사</div>
-              <div class="news-list__header-subscribe">내가 구독한 언론사</div>
-            </div>
-            <div class="news-list__header-group2">
-              <img
-                class="news-list__header-list-btn"
-                src="./asset/listIcon.svg"
-              />
-              <img
-                class="news-list__header-grid-btn"
-                src="./asset/splitIcon.svg"
-              />
-            </div>
-          </header>
+        <div class="space-32"></div>
 
-          <div class="news-list__body">
-            <div class="news-list__btn-wrap">
-              <li class="tab-btn">종합/경제</li>
-              <li class="tab-btn">방송/통신</li>
-              <li class="tab-btn">IT</li>
-              <li class="tab-btn">영자지</li>
-              <li class="tab-btn">스포츠/연예</li>
-              <li class="tab-btn">매거진/전문지</li>
-              <li class="tab-btn">지역</li>
-            </div>
-
-            <div class="news-list__main">
-              <div class="header">
-                <h1 class="title">서울경제</h1>
-                <div class="edit-date">2023.02.10. 18:27 편집</div>
-                <button class="subscribe-btn">+ 구독하기</button>
+        <section>
+          <!-- 구독, 그리드, 리스트 탭  -->
+          <div class="tab-and-viewer">
+            <div class="flex-between">
+              <div class="flex-center gap-24">
+                <span class="selected-bold16 text-strong pointer"
+                  >전체 언론사</span
+                >
+                <span class="text-weak available-medium16 pointer"
+                  >내가 구독한 언론사</span
+                >
               </div>
+              <div class="flex-center gap-4">
+                <img
+                  class="list-view-btn pointer"
+                  src="asset\icons\list-view.svg"
+                />
+                <img
+                  class="grid-view-btn pointer"
+                  src="asset\icons\grid-view.svg"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="space-24"></div>
+
+          <div class="news-list border-default">
+            <!-- 필드 탭 -->
+            <div class="field-tab surface-alt">
+              <button
+                class="field-tab-btn text-weak available-medium14 pointer"
+              >
+                종합/경제
+              </button>
+              <button
+                class="field-tab-btn text-weak available-medium14 pointer"
+              >
+                방송/통신
+              </button>
+              <button
+                class="field-tab-btn text-weak available-medium14 pointer"
+              >
+                IT
+              </button>
+              <button
+                class="field-tab-btn text-weak available-medium14 pointer"
+              >
+                영자지
+              </button>
+              <button
+                class="field-tab-btn text-weak available-medium14 pointer"
+              >
+                스포츠/연예
+              </button>
+              <button
+                class="field-tab-btn text-weak available-medium14 pointer"
+              >
+                매거진/전문지
+              </button>
+              <button
+                class="field-tab-btn text-weak available-medium14 pointer"
+              >
+                지역
+              </button>
+            </div>
+
+            <div class="p-24">
+              <div class="press-info flex gap-16">
+                <h1 class="brand">서울경제</h1>
+                <div class="edit-date text-default display-medium12">
+                  2023.02.10. 18:27 편집
+                </div>
+                <button
+                  class="subscribe-btn radius-50 border-default surface-alt"
+                >
+                  <img src="asset\icons\plus.svg" />
+                  <span class="available-medium12 text-weak pointer"
+                    >구독하기</span
+                  >
+                </button>
+              </div>
+
+              <div class="space-16"></div>
+
               <!-- 대표 뉴스 -->
-              <div class="body">
-                <div class="news-list__group1">
-                  <img class="img" src="./asset/articleImg.svg" />
-                  <a href="#" class="content"
+              <div class="news flex gap-32">
+                <div class="main-news flex-col gap-16">
+                  <img
+                    class="pointer"
+                    height="200"
+                    src="asset\imgs\newsThumbnail.svg"
+                  />
+                  <a href="#" class="available-medium16 text-strong"
                     >또 국민연금의 몽니…현대百 지주사 불발</a
                   >
                 </div>
 
                 <!-- 뉴스 기사 리스트 -->
-                <div class="news-list__group2">
-                  <ul id="news-list__articles"></ul>
+                <div class="sub-news">
+                  <ul class="flex-col gap-16 sub-news-list"></ul>
                 </div>
               </div>
             </div>
@@ -86,6 +150,6 @@
         </section>
       </main>
     </div>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
