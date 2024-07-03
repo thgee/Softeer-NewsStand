@@ -1,0 +1,115 @@
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+.gap-20 {
+  gap: 20px;
+}
+
+.gap-30 {
+  gap: 30px;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.p-30 {
+  padding: 30px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.m-20 {
+  margin: 20px;
+}
+
+.m-30 {
+  margin: 30px;
+}
+
+.font-xs {
+  font-size: 0.8rem;
+}
+
+.font-sm {
+  font-size: 0.9rem;
+}
+
+.font-lg {
+  font-size: 1.1rem;
+}
+
+.font-xl {
+  font-size: 0.2rem;
+}
+
+.text-strong {
+  color: #14212b;
+}
+
+.text-bold {
+  color: #4b5966;
+}
+
+.text-default {
+  color: #5f6e76;
+}
+
+.text-weak {
+  color: #879298;
+}
+
+.text-white-default {
+  color: #d9dbe9;
+}
+
+.text-white-weak {
+  color: #d9dbe9;
+}
+
+.text-point {
+  color: #4362d0;
+}
+
+.surface-default {
+  color: #ffffff;
+}
+
+.surface-alt {
+  color: #f5f7f9;
+}
+
+.surface-brand-default {
+  color: #4362d0;
+}
+
+.surface-brand-alt {
+  color: #7890e7;
+}
+
+.border-default {
+  color: #d2dae0;
+}
+
+.border-bold {
+  color: #6e8091;
+}/*# sourceMappingURL=common.css.map */
