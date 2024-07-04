@@ -1,4 +1,4 @@
-import { getToday } from "../utils/getToday.js";
+import { getToday } from "../util/getToday.js";
 
 (() => {
   const date = document.querySelector(".header-today-date");
