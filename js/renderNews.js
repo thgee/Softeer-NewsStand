@@ -1,8 +1,8 @@
-import { newsData } from "../data/newsData.js";
+import { myNewsData } from "../data/myNewsData.js";
 import { shortenStr } from "../util/shortenStr.js";
 
-export const renderNews = (page) => {
-  const news = newsData[page];
+export const renderNews = (idx) => {
+  const news = myNewsData[idx];
 
   // press news selector
   const pressNews = document.querySelector(".press-news");
@@ -19,7 +19,7 @@ export const renderNews = (page) => {
   const subNewsList = document.querySelector(".sub-news-list");
 
   // news Id 저장
-  pressNews.id = page;
+  pressNews.id = idx;
 
   // 언론사 로고
   brandLogo.src = news.brandImg;
@@ -34,7 +34,7 @@ export const renderNews = (page) => {
 
   // sub News
   subNewsList.innerHTML = "";
-  newsData[page].subNews.map(({ title, url }) => {
+  news.subNews.map(({ title, url }) => {
     const listItem = `<a href = ${url} class = "available-medium16 text-bold">${shortenStr(
       title,
       40

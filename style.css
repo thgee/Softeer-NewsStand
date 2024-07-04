@@ -45,6 +45,14 @@
 
     .field-tab-btn {
       padding: 11.5px 16px;
+
+      &.active {
+        padding-right: 80px;
+        font-size: 14px;
+        font-weight: 700;
+        background-color: var(--surface-brand-alt);
+        color: var(--text-white-default);
+      }
     }
   }
 
