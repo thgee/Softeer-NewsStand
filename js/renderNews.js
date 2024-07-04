@@ -1,8 +1,8 @@
-import { myNewsData } from "../data/myNewsData.js";
+import { subscribeData } from "../data/subscribeData.js";
 import { shortenStr } from "../util/shortenStr.js";
 
 export const renderNews = (idx) => {
-  const news = myNewsData[idx];
+  const news = subscribeData[idx];
 
   // press news selector
   const pressNews = document.querySelector(".press-news");

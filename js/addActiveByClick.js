@@ -2,8 +2,7 @@
 // callback은 active 달아준 이후에 실행될 함수
 
 export const addActiveByClick = (className, callback = () => {}) => {
-  const elements = document.querySelectorAll(className);
-
+  const elements = document.querySelectorAll(`.${className}`);
   for (let i = 0; i < elements.length; i++) {
     elements[i].addEventListener("click", () => {
       // 기존의 active들을 모두 제거

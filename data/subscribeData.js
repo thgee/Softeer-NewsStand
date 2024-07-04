@@ -1,6 +1,6 @@
 // 내가 구독한 언론사
 
-export const myNewsData = [
+export const subscribeData = [
   {
     id: 0,
     name: "한국농어촌방송",
