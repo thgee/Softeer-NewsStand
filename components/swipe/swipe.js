@@ -1,5 +1,5 @@
 import { subscribeData } from "../../data/subscribeData.js";
-import { renderNews } from "../renderNews.js";
+import { news } from "../news/news.js";
 
 export const swipe = () => {
   const leftBtn = document.querySelector(".left-btn");
@@ -13,7 +13,7 @@ export const swipe = () => {
     let nextIdx = Number(pressNews.id)
       ? Number(pressNews.id) - 1
       : subscribeData.length - 1;
-    renderNews(nextIdx);
+    news(nextIdx);
     fieldTabBtns[prevIdx].classList.remove("active");
     fieldTabBtns[nextIdx].classList.add("active");
   });
@@ -24,7 +24,7 @@ export const swipe = () => {
 
     let prevIdx = Number(pressNews.id);
     let nextIdx = (Number(pressNews.id) + 1) % subscribeData.length;
-    renderNews(nextIdx);
+    news(nextIdx);
 
     fieldTabBtns[prevIdx].classList.remove("active");
     fieldTabBtns[nextIdx].classList.add("active");
