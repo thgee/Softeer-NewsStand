@@ -1,7 +1,7 @@
 import { allNewsData } from "../../data/allNewsData.js";
 import { subscribeData } from "../../data/subscribeData.js";
-import { allNews } from "../allNews/allNews.js";
-import { subscribeNews } from "../subscribeNews/subscribeNews.js";
+import { allNews } from "../news/allNews/allNews.js";
+import { subscribeNews } from "../news/subscribeNews/subscribeNews.js";
 
 export const fieldTab = (mode) => {
   const fieldTab = document.querySelector(".field-tab");
