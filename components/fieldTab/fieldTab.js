@@ -7,6 +7,7 @@ export const fieldTab = (mode) => {
   const fieldTab = document.querySelector(".field-tab");
 
   fieldTab.innerHTML = "";
+
   // 전체 언론사 버튼이 눌렸을 때
   if (mode === "all") {
     // field-tab-btn 렌더링
@@ -40,7 +41,7 @@ const renderAllFieldTab = (fieldTab) => {
     const fieldTabBtn = `
       <button class="field-tab-btn text-weak available-medium14 pointer ${
         newsData.cateId === 0 ? "active" : ""
-      }" data-cate-id="${newsData.cateId}, data-brand-id = 0">
+      } " data-cate-id=${newsData.cateId} data-brand-id = 0>
         ${newsData.cate}
         <div class = "brand-page-wrap ${
           newsData.cateId === 0 ? "" : "hidden"
@@ -88,7 +89,7 @@ const handleClickAllField = (event) => {
   btn.querySelector(".brand-page-wrap").classList.remove("hidden");
 
   // 선택된 언론사 뉴스 렌더링
-  allNews(btn.dataset.brandId);
+  allNews(btn.dataset.cateId, btn.dataset.brandId);
 };
 
 const handleClickSubscribeField = (event) => {
