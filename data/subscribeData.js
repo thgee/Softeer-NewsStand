@@ -125,7 +125,6 @@ export const subscribeData = [
       },
     ],
   },
-
   {
     brandId: 3,
     brand: "헤럴드경제",

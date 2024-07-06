@@ -88,7 +88,7 @@ const handleClickAllField = (event) => {
   btn.querySelector(".brand-page-wrap").classList.remove("hidden");
 
   // 선택된 언론사 뉴스 렌더링
-  subscribeNews(btn.dataset.brandId);
+  allNews(btn.dataset.brandId);
 };
 
 const handleClickSubscribeField = (event) => {
