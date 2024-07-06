@@ -1,7 +1,8 @@
 @import url("./style/variable.css");
 @import url("./style/common.css");
 @import url("./style/reset.css");
-@import url("./style/newsBar.css");
+@import url("./components/subscribeSwitchBtn/style.css");
+@import url("./components/fieldTab/style.css");
 
 .news-stand {
   width: 930px;
@@ -40,21 +41,6 @@
 
 .news-list {
   position: relative;
-  .field-tab {
-    border-bottom: 1px solid var(--border-default);
-
-    .field-tab-btn {
-      padding: 11.5px 16px;
-
-      &.active {
-        padding-right: 80px;
-        font-size: 14px;
-        font-weight: 700;
-        background-color: var(--surface-brand-alt);
-        color: var(--text-white-default);
-      }
-    }
-  }
 
   .press-info {
     .subscribe-btn {

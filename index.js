@@ -1,10 +1,7 @@
-import { addActiveByClick } from "./js/addActiveByClick.js";
-import { changeFieldTab } from "./js/changeFieldTab.js";
-import { swipe } from "./js/subscribe/swipe.js";
-import { renderNews } from "./js/renderNews.js";
+import { subscribeSwitchBtn } from "./components/subscribeSwitchBtn/subscribeSwitchBtn.js";
+import { header } from "./components/header/header.js";
+// import { swipe } from "./components/swipe/swipe.js";
 
-changeFieldTab();
-renderNews(0);
-swipe();
-addActiveByClick(".field-tab-btn", renderNews);
-addActiveByClick(".press-tab-btn", changeFieldTab);
+header();
+subscribeSwitchBtn();
+// swipe();

@@ -2,8 +2,8 @@
 
 export const subscribeData = [
   {
-    id: 0,
-    name: "한국농어촌방송",
+    brandId: 0,
+    brand: "한국농어촌방송",
     brandImg: `../asset/brandLogo/brand${0}.svg`,
     editDate: "2023.02.10. 18:27",
     mainNews: {
@@ -43,8 +43,8 @@ export const subscribeData = [
     ],
   },
   {
-    id: 1,
-    name: "뉴스타파",
+    brandId: 1,
+    brand: "뉴스타파",
     brandImg: `../asset/brandLogo/brand${1}.svg`,
     editDate: "2023.08.20. 18:21",
 
@@ -85,8 +85,8 @@ export const subscribeData = [
     ],
   },
   {
-    id: 2,
-    name: "데일리안",
+    brandId: 2,
+    brand: "데일리안",
     brandImg: `../asset/brandLogo/brand${2}.svg`,
     editDate: "2021.12.30. 09:21",
     mainNews: {
@@ -127,8 +127,8 @@ export const subscribeData = [
   },
 
   {
-    id: 3,
-    name: "헤럴드경제",
+    brandId: 3,
+    brand: "헤럴드경제",
     brandImg: `../asset/brandLogo/brand${3}.svg`,
     editDate: "2021.12.30. 09:21",
     mainNews: {
@@ -169,8 +169,8 @@ export const subscribeData = [
   },
 
   {
-    id: 4,
-    name: "세계일보",
+    brandId: 4,
+    brand: "세계일보",
     brandImg: `../asset/brandLogo/brand${4}.svg`,
     editDate: "2021.12.30. 09:21",
     mainNews: {
