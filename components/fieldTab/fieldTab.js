@@ -85,8 +85,11 @@ const handleClickAllField = (event) => {
   // 클릭된 버튼에 active 클래스 추가
   btn.classList.add("active");
 
-  // 카테고리 개수에 hidden 클래스 제거
+  // 언론사 인덱스에 hidden 클래스 제거
   btn.querySelector(".brand-page-wrap").classList.remove("hidden");
+
+  // 언론사 인덱스 1로 표시
+  btn.querySelector(".cur-brand-page").innerHTML = 1;
 
   // 선택된 언론사 뉴스 렌더링
   allNews(btn.dataset.cateId, btn.dataset.brandId);

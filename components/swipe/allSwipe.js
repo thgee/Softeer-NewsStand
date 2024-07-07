@@ -28,6 +28,9 @@ const handleClickLeftBtn = ({
   fieldTabBtns[curCateId].classList.remove("active");
   fieldTabBtns[prevCateId].classList.add("active");
 
+  // brand-Page-wrap 업데이트
+  updateBrandPageWrap(fieldTabBtns, curCateId, prevCateId, prevBrandId);
+
   // 뉴스 렌더링
   allNews(prevCateId, prevBrandId);
 };
@@ -45,6 +48,9 @@ const handleClickRightBtn = ({
   // 필드 버튼 active 처리
   fieldTabBtns[curCateId].classList.remove("active");
   fieldTabBtns[nextCateId].classList.add("active");
+
+  // brand-Page-wrap 업데이트
+  updateBrandPageWrap(fieldTabBtns, curCateId, nextCateId, nextBrandId);
 
   // 뉴스 렌더링
   allNews(nextCateId, nextBrandId);
@@ -85,4 +91,31 @@ const calcNextId = (curCateId, curBrandId) => {
   }
 
   return [nextCateId, nextBrandId];
+};
+
+const updateBrandPageWrap = (
+  fieldTabBtns,
+  curCateId,
+  followingCateId,
+  followingBrandId
+) => {
+  // 이전에 active 였던 tab -> hidden
+  let curBrandPageWrap =
+    fieldTabBtns[curCateId].querySelector(".brand-page-wrap");
+  let curBrandPage = curBrandPageWrap.querySelector(".cur-brand-page");
+
+  let followingBrandPageWrap =
+    fieldTabBtns[followingCateId].querySelector(".brand-page-wrap");
+  let followingBrandPage =
+    followingBrandPageWrap.querySelector(".cur-brand-page");
+
+  // 몇 번째 언론사인지 표시
+  followingBrandPage.innerHTML = followingBrandId + 1;
+
+  // 카테고리가 변하지 않았다면 언론사 인덱스만 바꾸고 종료
+  if (curCateId === followingCateId) return;
+
+  // 카테고리가 변했다면 hidden 처리
+  curBrandPageWrap.classList.add("hidden");
+  followingBrandPageWrap.classList.remove("hidden");
 };
