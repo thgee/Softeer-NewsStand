@@ -2,24 +2,31 @@ import { allNewsData } from "../../data/allNewsData.js";
 import { subscribeData } from "../../data/subscribeData.js";
 import { allNews } from "../news/allNews/allNews.js";
 import { subscribeNews } from "../news/subscribeNews/subscribeNews.js";
+import {
+  handleClickSubscribeLeftBtn,
+  handleClickSubscribeRightBtn,
+} from "./subscribeSwipe.js";
 
+// 전체 언론사 탭에서의 스와이프
 export const allSwipe = () => {
-  // 기존의 이벤트 삭제 후 진행할 것
   const leftBtn = document.querySelector(".left-btn");
   const rightBtn = document.querySelector(".right-btn");
 
-  const pressNews = document.querySelector(".press-news");
+  // subscribeSwipe에서의 이벤트 삭제
+  leftBtn.removeEventListener("click", handleClickSubscribeLeftBtn);
+  rightBtn.removeEventListener("click", handleClickSubscribeRightBtn);
 
-  leftBtn.addEventListener("click", () => handleClickLeftBtn(pressNews));
-  rightBtn.addEventListener("click", () => handleClickRightBtn(pressNews));
+  leftBtn.addEventListener("click", handleClickAllLeftBtn);
+  rightBtn.addEventListener("click", handleClickAllRightBtn);
 };
 
-const handleClickLeftBtn = ({
-  dataset: { cateId: curCateId, brandId: curBrandId },
-}) => {
+export const handleClickAllLeftBtn = () => {
+  const {
+    dataset: { cateId, brandId },
+  } = document.querySelector(".press-news");
   const fieldTabBtns = document.querySelectorAll(".field-tab-btn");
 
-  [curCateId, curBrandId] = [curCateId, curBrandId].map(Number);
+  const [curCateId, curBrandId] = [cateId, brandId].map(Number);
 
   // 스와이프 한 후의 페이지를 계산
   let [prevCateId, prevBrandId] = calcPrevId(curCateId, curBrandId);
@@ -35,12 +42,13 @@ const handleClickLeftBtn = ({
   allNews(prevCateId, prevBrandId);
 };
 
-const handleClickRightBtn = ({
-  dataset: { cateId: curCateId, brandId: curBrandId },
-}) => {
+export const handleClickAllRightBtn = () => {
+  const {
+    dataset: { cateId, brandId },
+  } = document.querySelector(".press-news");
   const fieldTabBtns = document.querySelectorAll(".field-tab-btn");
 
-  [curCateId, curBrandId] = [curCateId, curBrandId].map(Number);
+  const [curCateId, curBrandId] = [cateId, brandId].map(Number);
 
   // 스와이프 한 후의 페이지를 계산
   let [nextCateId, nextBrandId] = calcNextId(curCateId, curBrandId);

@@ -1,48 +1,55 @@
 import { subscribeData } from "../../data/subscribeData.js";
 import { subscribeNews } from "../news/subscribeNews/subscribeNews.js";
+import { handleClickAllLeftBtn, handleClickAllRightBtn } from "./allSwipe.js";
 
 // 구독한 언론사 탭에서의 스와이프
 export const subscribeSwipe = () => {
   const leftBtn = document.querySelector(".left-btn");
   const rightBtn = document.querySelector(".right-btn");
 
-  const pressNews = document.querySelector(".press-news");
+  // subscribeSwipe에서의 이벤트 삭제
+  leftBtn.removeEventListener("click", handleClickAllLeftBtn);
+  rightBtn.removeEventListener("click", handleClickAllRightBtn);
 
-  
-  leftBtn.addEventListener("click", () => handleClickLeftBtn(pressNews));
-  rightBtn.addEventListener("click", () => handleClickRightBtn(pressNews));
+  leftBtn.addEventListener("click", handleClickSubscribeLeftBtn);
+  rightBtn.addEventListener("click", handleClickSubscribeRightBtn);
 };
 
-const handleClickLeftBtn = ({ dataset: { brandId } }) => {
+export const handleClickSubscribeLeftBtn = () => {
+  const {
+    dataset: { brandId },
+  } = document.querySelector(".press-news");
   const fieldTabBtns = document.querySelectorAll(".field-tab-btn");
 
-  // 이전에 active였던 필드 버튼 id
-  let prevId = Number(brandId);
+  let curBrandId = Number(brandId);
 
-  // 다음에 active가 될 필드 버튼 id
-  let nextId = Number(brandId) ? Number(brandId) - 1 : subscribeData.length - 1;
+  // 스와이프 한 후의 페이지를 계산
+  let prevBrandId = curBrandId ? curBrandId - 1 : subscribeData.length - 1;
 
   // 필드 버튼 active 처리
-  fieldTabBtns[prevId].classList.remove("active");
-  fieldTabBtns[nextId].classList.add("active");
+  fieldTabBtns[curBrandId].classList.remove("active");
+  fieldTabBtns[prevBrandId].classList.add("active");
 
   // 뉴스 렌더링
-  subscribeNews(nextId);
+  subscribeNews(prevBrandId);
 };
 
-const handleClickRightBtn = ({ dataset: { brandId } }) => {
+export const handleClickSubscribeRightBtn = () => {
+  const {
+    dataset: { brandId },
+  } = document.querySelector(".press-news");
   const fieldTabBtns = document.querySelectorAll(".field-tab-btn");
 
-  // 이전에 active였던 필드 버튼 id
-  let prevId = Number(brandId);
+  let curBrandId = Number(brandId);
 
-  // 다음에 active가 될 필드 버튼 id
-  let nextId = (Number(brandId) + 1) % subscribeData.length;
+  // 스와이프 한 후의 페이지를 계산
+  let prevBrandId =
+    curBrandId === subscribeData.length - 1 ? 0 : curBrandId + 1;
 
   // 필드 버튼 active 처리
-  fieldTabBtns[prevId].classList.remove("active");
-  fieldTabBtns[nextId].classList.add("active");
+  fieldTabBtns[curBrandId].classList.remove("active");
+  fieldTabBtns[prevBrandId].classList.add("active");
 
   // 뉴스 렌더링
-  subscribeNews(nextId);
+  subscribeNews(prevBrandId);
 };
