@@ -32,6 +32,10 @@
     .subscribe-btn {
       padding: 2px 8px;
     }
+
+    .remove-subscribe-btn {
+      padding: 7px;
+    }
   }
 
   .news {

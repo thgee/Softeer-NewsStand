@@ -1,5 +1,6 @@
 import { allNewsData } from "../../../data/allNewsData.js";
 import { shortenStr } from "../../../util/shortenStr.js";
+import { renderSubscribeBtn } from "../../subscribe/renderSubscribeBtn.js";
 
 export const allNews = (cateIdx, brandIdx) => {
   const newsData = allNewsData[cateIdx].data[brandIdx];
@@ -18,6 +19,9 @@ export const allNews = (cateIdx, brandIdx) => {
   // sub news selector
   const subNewsList = pressNews.querySelector(".sub-news-list");
 
+  // brandId
+  const brandId = allNewsData[cateIdx].data[brandIdx].brandId;
+
   // brand-idx 저장
   pressNews.dataset.brandIdx = brandIdx;
 
@@ -25,7 +29,10 @@ export const allNews = (cateIdx, brandIdx) => {
   pressNews.dataset.cateIdx = cateIdx;
 
   // brandId 저장
-  pressNews.dataset.brandId = allNewsData[cateIdx].data[brandIdx].brandId;
+  pressNews.dataset.brandId = brandId;
+
+  // 구독버튼 hidden 처리
+  renderSubscribeBtn(brandId);
 
   // 언론사 로고
   brandLogo.src = newsData.brandImg;

@@ -24,6 +24,9 @@ export const subscribeNews = (brandIdx) => {
   // news Id 저장
   pressNews.dataset.brandIdx = brandIdx;
 
+  // 구독한 언론사 화면이므로 cateId = -1로 저장
+  pressNews.dataset.cateId = -1;
+
   // 언론사 로고
   brandLogo.src = newsData.brandImg;
 

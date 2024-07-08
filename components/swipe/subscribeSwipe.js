@@ -47,7 +47,7 @@ export const handleClickSubscribeRightBtn = () => {
 
   // 스와이프 한 후의 페이지를 계산
   let prevBrandIdx =
-    curBrandIdx === subscribeList .length - 1 ? 0 : curBrandIdx + 1;
+    curBrandIdx === subscribeList.length - 1 ? 0 : curBrandIdx + 1;
 
   // 필드 버튼 active 처리
   fieldTabBtns[curBrandIdx].classList.remove("active");
