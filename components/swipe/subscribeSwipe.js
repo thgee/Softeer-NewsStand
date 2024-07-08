@@ -1,4 +1,5 @@
 import { subscribeData } from "../../data/subscribeData.js";
+import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { subscribeNews } from "../news/subscribeNews/subscribeNews.js";
 import { handleClickAllLeftBtn, handleClickAllRightBtn } from "./allSwipe.js";
 
@@ -17,39 +18,41 @@ export const subscribeSwipe = () => {
 
 export const handleClickSubscribeLeftBtn = () => {
   const {
-    dataset: { brandId },
+    dataset: { brandIdx },
   } = document.querySelector(".press-news");
   const fieldTabBtns = document.querySelectorAll(".field-tab-btn");
 
-  let curBrandId = Number(brandId);
+  let subscribeList = getSubscribeList();
+  let curBrandIdx = Number(brandIdx);
 
   // 스와이프 한 후의 페이지를 계산
-  let prevBrandId = curBrandId ? curBrandId - 1 : subscribeData.length - 1;
+  let prevBrandIdx = curBrandIdx ? curBrandIdx - 1 : subscribeList.length - 1;
 
   // 필드 버튼 active 처리
-  fieldTabBtns[curBrandId].classList.remove("active");
-  fieldTabBtns[prevBrandId].classList.add("active");
+  fieldTabBtns[curBrandIdx].classList.remove("active");
+  fieldTabBtns[prevBrandIdx].classList.add("active");
 
   // 뉴스 렌더링
-  subscribeNews(prevBrandId);
+  subscribeNews(prevBrandIdx);
 };
 
 export const handleClickSubscribeRightBtn = () => {
   const {
-    dataset: { brandId },
+    dataset: { brandIdx },
   } = document.querySelector(".press-news");
+  let subscribeList = getSubscribeList();
   const fieldTabBtns = document.querySelectorAll(".field-tab-btn");
 
-  let curBrandId = Number(brandId);
+  let curBrandIdx = Number(brandIdx);
 
   // 스와이프 한 후의 페이지를 계산
-  let prevBrandId =
-    curBrandId === subscribeData.length - 1 ? 0 : curBrandId + 1;
+  let prevBrandIdx =
+    curBrandIdx === subscribeList .length - 1 ? 0 : curBrandIdx + 1;
 
   // 필드 버튼 active 처리
-  fieldTabBtns[curBrandId].classList.remove("active");
-  fieldTabBtns[prevBrandId].classList.add("active");
+  fieldTabBtns[curBrandIdx].classList.remove("active");
+  fieldTabBtns[prevBrandIdx].classList.add("active");
 
   // 뉴스 렌더링
-  subscribeNews(prevBrandId);
+  subscribeNews(prevBrandIdx);
 };

@@ -1,5 +1,6 @@
 import { allNewsData } from "../../data/allNewsData.js";
 import { subscribeData } from "../../data/subscribeData.js";
+import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { allNews } from "../news/allNews/allNews.js";
 import { subscribeNews } from "../news/subscribeNews/subscribeNews.js";
 
@@ -37,14 +38,14 @@ export const fieldTab = (mode) => {
 };
 
 const renderAllFieldTab = (fieldTab) => {
-  allNewsData.forEach((newsData) => {
+  allNewsData.forEach((newsData, cateIdx) => {
     const fieldTabBtn = `
       <button class="field-tab-btn text-weak available-medium14 pointer ${
-        newsData.cateId === 0 ? "active" : ""
-      } " data-cate-id=${newsData.cateId} data-brand-id = 0>
+        cateIdx === 0 ? "active" : ""
+      } " data-cate-idx=${cateIdx} data-brand-idx = 0>
         ${newsData.cate}
         <div class = "brand-page-wrap ${
-          newsData.cateId === 0 ? "" : "hidden"
+          cateIdx === 0 ? "" : "hidden"
         } display-bold12">
          <span class = "cur-brand-page text-white-default">1</span> 
          <span class = "total-brand-page text-white-weak}">/${
@@ -58,12 +59,14 @@ const renderAllFieldTab = (fieldTab) => {
 };
 
 const renderSubscribeFieldTab = (fieldTab) => {
-  subscribeData.forEach((newsData) => {
+  let subscribeBrandIdList = getSubscribeList();
+
+  subscribeBrandIdList.forEach((brandId, brandIdx) => {
     const fieldTabBtn = `
       <button class="field-tab-btn text-weak available-medium14 pointer ${
-        newsData.brandId === 0 ? "active" : ""
-      }" data-brand-id="${newsData.brandId}">
-        ${newsData.brand}
+        brandIdx === 0 ? "active" : ""
+      }" data-brand-idx="${brandIdx}">
+        ${subscribeData[brandId].brandName}
       </button>
     `;
     fieldTab.innerHTML += fieldTabBtn;
@@ -92,7 +95,7 @@ const handleClickAllField = (event) => {
   btn.querySelector(".cur-brand-page").innerHTML = 1;
 
   // 선택된 언론사 뉴스 렌더링
-  allNews(btn.dataset.cateId, btn.dataset.brandId);
+  allNews(btn.dataset.cateIdx, btn.dataset.brandIdx);
 };
 
 const handleClickSubscribeField = (event) => {
@@ -108,5 +111,5 @@ const handleClickSubscribeField = (event) => {
   btn.classList.add("active");
 
   // 선택된 언론사 뉴스 렌더링
-  subscribeNews(btn.dataset.brandId);
+  subscribeNews(btn.dataset.brandIdx);
 };

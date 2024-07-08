@@ -1,8 +1,11 @@
 import { subscribeData } from "../../../data/subscribeData.js";
 import { shortenStr } from "../../../util/shortenStr.js";
+import { getSubscribeList } from "../../..//util/getSubscribeList.js";
 
-export const subscribeNews = (brandId) => {
-  const newsData = subscribeData[brandId];
+export const subscribeNews = (brandIdx) => {
+  // 로컬스토리지에서 받아온 brandId를 사용하여 언론사 뉴스 추출
+  let brandId = getSubscribeList()[brandIdx];
+  let newsData = subscribeData[brandId];
 
   // press news selector
   const pressNews = document.querySelector(".press-news");
@@ -19,7 +22,7 @@ export const subscribeNews = (brandId) => {
   const subNewsList = pressNews.querySelector(".sub-news-list");
 
   // news Id 저장
-  pressNews.dataset.brandId = brandId;
+  pressNews.dataset.brandIdx = brandIdx;
 
   // 언론사 로고
   brandLogo.src = newsData.brandImg;
