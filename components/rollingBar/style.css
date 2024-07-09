@@ -1,0 +1,23 @@
+.rolling-bar {
+  height: 49px;
+  width: 100%;
+
+  .current-news-1 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &.rolld {
+      transition: all 0.5s;
+      transform: translateY(0);
+    }
+  }
+  .current-news-2 {
+    transform: translateY(100%);
+
+    &.rolld {
+      transition: all 0.5s;
+      transform: translateY(-100%);
+    }
+  }
+}
