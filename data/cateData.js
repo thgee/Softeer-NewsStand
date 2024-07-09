@@ -1,6 +1,6 @@
-// 전체 언론사
+// 카테고리별 뉴스 데이터
 
-export const allNewsData = [
+export const cateData = [
   {
     cate: "종합/경제",
     cateId: 0,

@@ -1,4 +1,4 @@
-import { subscribeData } from "../../data/subscribeData.js";
+import { brandData } from "../../data/brandData.js";
 import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { subscribeNews } from "../news/subscribeNews/subscribeNews.js";
 import { handleClickAllLeftBtn, handleClickAllRightBtn } from "./allSwipe.js";

@@ -1,4 +1,4 @@
-import { subscribeData } from "../../data/subscribeData.js";
+import { brandData } from "../../data/brandData.js";
 import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { fieldTab } from "../fieldTab/fieldTab.js";
 import { allNews } from "../news/allNews/allNews.js";
@@ -32,7 +32,7 @@ const renderModal = () => {
   [brandId, cateIdx, brandIdx] = [brandId, cateIdx, brandIdx].map(Number);
 
   // 임시방편으로 confirm 사용
-  let brandName = subscribeData[brandId].brandName;
+  let brandName = brandData[brandId].brandName;
   if (confirm(`${brandName}을 구독 해지하시겠습니까?`)) {
     handleClickRemove(brandId);
 

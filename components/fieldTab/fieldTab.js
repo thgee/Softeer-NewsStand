@@ -1,5 +1,5 @@
-import { allNewsData } from "../../data/allNewsData.js";
-import { subscribeData } from "../../data/subscribeData.js";
+import { cateData } from "../../data/cateData.js";
+import { brandData } from "../../data/brandData.js";
 import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { allNews } from "../news/allNews/allNews.js";
 import { subscribeNews } from "../news/subscribeNews/subscribeNews.js";
@@ -43,7 +43,7 @@ export const fieldTab = (mode) => {
 };
 
 const renderAllFieldTab = (fieldTab) => {
-  allNewsData.forEach((newsData, cateIdx) => {
+  cateData.forEach((newsData, cateIdx) => {
     const fieldTabBtn = `
       <button class="field-tab-btn text-weak available-medium14 pointer ${
         cateIdx === 0 ? "active" : ""
@@ -77,7 +77,7 @@ const renderSubscribeFieldTab = (fieldTab) => {
       <button class="field-tab-btn text-weak available-medium14 pointer ${
         brandIdx === 0 ? "active" : ""
       }" data-brand-idx=${brandIdx} data-brand-id=${Number(brandId)}>
-        ${subscribeData[brandId].brandName}
+        ${brandData[brandId].brandName}
       </button>
     `;
     fieldTab.innerHTML += fieldTabBtn;

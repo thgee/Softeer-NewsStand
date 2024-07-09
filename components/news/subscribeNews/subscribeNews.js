@@ -1,4 +1,4 @@
-import { subscribeData } from "../../../data/subscribeData.js";
+import { brandData } from "../../../data/brandData.js";
 import { shortenStr } from "../../../util/shortenStr.js";
 import { getSubscribeList } from "../../..//util/getSubscribeList.js";
 
@@ -10,7 +10,7 @@ import { getSubscribeList } from "../../..//util/getSubscribeList.js";
 export const subscribeNews = (brandIdx) => {
   // 로컬스토리지에서 받아온 brandId를 사용하여 언론사 뉴스 추출
   let brandId = getSubscribeList()[brandIdx];
-  let newsData = subscribeData[brandId];
+  let newsData = brandData[brandId];
 
   // press news selector
   const pressNews = document.querySelector(".press-news");

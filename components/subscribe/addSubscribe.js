@@ -1,5 +1,7 @@
+import { brandData } from "../../data/brandData.js";
 import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { allNews } from "../news/allNews/allNews.js";
+import { renderToast } from "../toast/renderToast.js";
 import { isSubscribe } from "./isSubscribe.js";
 
 /**
@@ -33,6 +35,8 @@ const handleClickSubscribeBtn = () => {
 
   // 화면에 구독여부를 즉시 반영하기 위해 뉴스데이터 리렌더링
   allNews(cateIdx, brandIdx);
+
+  renderToast(`${brandData[brandId].brandName}을 구독하였습니다`);
 };
 
 /**
