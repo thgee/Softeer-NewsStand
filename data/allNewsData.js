@@ -90,7 +90,7 @@ export const allNewsData = [
         ],
       },
       {
-        brandId: 0,
+        brandId: 3,
         brand: "한국농어촌방송",
         brandImg: `../asset/darkBrandLogo/brand${0}.svg`,
         editDate: "2023.02.10. 18:27",
@@ -138,7 +138,7 @@ export const allNewsData = [
     cateId: 1,
     data: [
       {
-        brandId: 0,
+        brandId: 3,
         brand: "한국농어촌방송",
         brandImg: `../asset/darkBrandLogo/brand${0}.svg`,
         editDate: "2023.02.10. 18:27",
@@ -180,7 +180,7 @@ export const allNewsData = [
         ],
       },
       {
-        brandId: 0,
+        brandId: 3,
         brand: "한국농어촌방송",
         brandImg: `../asset/darkBrandLogo/brand${0}.svg`,
         editDate: "2023.02.10. 18:27",
@@ -271,7 +271,7 @@ export const allNewsData = [
     cateId: 2,
     data: [
       {
-        brandId: 0,
+        brandId: 3,
         brand: "한국농어촌방송",
         brandImg: `../asset/darkBrandLogo/brand${3}.svg`,
         editDate: "2023.02.10. 18:27",

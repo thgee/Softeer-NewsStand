@@ -22,6 +22,10 @@ export const allNews = (cateIdx, brandIdx) => {
   // brandId
   const brandId = allNewsData[cateIdx].data[brandIdx].brandId;
 
+  // 구독한 언론사가 없는 경우 예외처리
+  pressNews.classList.remove("hidden");
+  document.querySelector(".no-subscribe").classList.add("hidden");
+
   // brand-idx 저장
   pressNews.dataset.brandIdx = brandIdx;
 

@@ -4,6 +4,10 @@ import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { allNews } from "../news/allNews/allNews.js";
 import { subscribeNews } from "../news/subscribeNews/subscribeNews.js";
 
+/**
+ *
+ * @param {"all" | "subscribe"} mode
+ */
 export const fieldTab = (mode) => {
   const fieldTab = document.querySelector(".field-tab");
 
@@ -23,11 +27,12 @@ export const fieldTab = (mode) => {
 
   // 구독한 언론사 버튼이 눌렸을 때
   if (mode === "subscribe") {
-    // field-tab-btn 렌더링
-    renderSubscribeFieldTab(fieldTab);
-
     // 기존의 이벤트 제거
     fieldTab.removeEventListener("click", handleClickAllField);
+
+    // field-tab-btn 렌더링
+    // 구독한 언론사가 없는 경우 렌더링하지 않음
+    if (renderSubscribeFieldTab(fieldTab) === -1) return;
 
     // 이벤트 위임을 사용하여 클릭 이벤트 리스너 추가
     fieldTab.addEventListener("click", handleClickSubscribeField);
@@ -61,11 +66,17 @@ const renderAllFieldTab = (fieldTab) => {
 const renderSubscribeFieldTab = (fieldTab) => {
   let subscribeBrandIdList = getSubscribeList();
 
+  // 구독한 언론사가 없는 경우
+  if (subscribeBrandIdList.length === 0) {
+    subscribeNews(-1);
+    return -1;
+  }
+
   subscribeBrandIdList.forEach((brandId, brandIdx) => {
     const fieldTabBtn = `
       <button class="field-tab-btn text-weak available-medium14 pointer ${
         brandIdx === 0 ? "active" : ""
-      }" data-brand-idx="${brandIdx}">
+      }" data-brand-idx=${brandIdx} data-brand-id=${Number(brandId)}>
         ${subscribeData[brandId].brandName}
       </button>
     `;
