@@ -10,8 +10,10 @@
   padding: 16px 24px;
   opacity: 0;
   transition: all 1s ease-in-out;
+  z-index: -1;
 
   &.appear {
     opacity: 1;
+    z-index: 10;
   }
 }

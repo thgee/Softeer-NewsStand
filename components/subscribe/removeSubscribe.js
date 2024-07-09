@@ -2,6 +2,7 @@ import { brandData } from "../../data/brandData.js";
 import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { fieldTab } from "../fieldTab/fieldTab.js";
 import { allNews } from "../news/allNews/allNews.js";
+import { renderToast } from "../toast/renderToast.js";
 import { isSubscribe } from "./isSubscribe.js";
 
 /**
@@ -19,27 +20,50 @@ import { isSubscribe } from "./isSubscribe.js";
 //  5-2. 만약 구독 탭이라면 FieldTab 호출
 export const removeSubscribe = () => {
   const removeSubscribeBtn = document.querySelector(".remove-subscribe-btn");
-  removeSubscribeBtn.addEventListener("click", renderModal);
+  removeSubscribeBtn.addEventListener("click", renderRemoveModal);
 };
 
 /**
  * 구독해지 모달 UI를 렌더링
  *
  */
-const renderModal = () => {
+const renderRemoveModal = () => {
   let { brandId, cateIdx, brandIdx } =
     document.querySelector(".press-news").dataset;
   [brandId, cateIdx, brandIdx] = [brandId, cateIdx, brandIdx].map(Number);
+  const modalOverlay = document.querySelector(".remove-subscribe-overlay");
+  const modal = document.querySelector(".remove-subscribe-modal");
+  modal.innerHTML = `
+                <div
+                  class="remove-text-wrap surface-default display-medium16 border-default-left border-default-top"
+                >
+                  <span><strong>${brandData[brandId].brandName}</strong> 을(를)</span> 
+                  <span>구독해지하시겠습니까?</span>
+                </div>
+                <div class="flex-center">
+                  <button class="yes-remove-btn border-default-left border-default-top pointer surface-alt available-medium16 text-default">
+                    예, 해지합니다</button
+                  ><button class="no-remove-btn border-default-left border-default-top pointer surface-alt available-medium16 text-default">
+                    아니오
+                  </button>
+                </div>
+  `;
 
-  // 임시방편으로 confirm 사용
-  let brandName = brandData[brandId].brandName;
-  if (confirm(`${brandName}을 구독 해지하시겠습니까?`)) {
-    handleClickRemove(brandId);
+  modal.classList.remove("hidden");
+  modalOverlay.classList.remove("hidden");
 
-    // 구독 해지를 적용한 화면을 바로 렌더링 해주어야 함
-    if (cateIdx === -1) fieldTab("subscribe");
-    else allNews(cateIdx, brandIdx);
-  }
+  const yesSubscribeBtn = modal.querySelector(".yes-remove-btn");
+  const noSubscribeBtn = modal.querySelector(".no-remove-btn");
+  yesSubscribeBtn.addEventListener("click", () =>
+    handleClickYesRemove(brandId, cateIdx, brandIdx, modal, modalOverlay)
+  );
+  noSubscribeBtn.addEventListener("click", () =>
+    handleClickNoRemove(modal, modalOverlay)
+  );
+
+  modalOverlay.addEventListener("click", () =>
+    handleClickNoRemove(modal, modalOverlay)
+  );
 };
 
 /**
@@ -48,7 +72,13 @@ const renderModal = () => {
  *
  * @param {number} brandId
  */
-const handleClickRemove = (brandId) => {
+const handleClickYesRemove = (
+  brandId,
+  cateIdx,
+  brandIdx,
+  modal,
+  modalOverlay
+) => {
   let subscribeList = getSubscribeList();
 
   // 구독 해지한 언론사가 삭제된 배열
@@ -56,4 +86,20 @@ const handleClickRemove = (brandId) => {
     (it) => Number(it) !== Number(brandId)
   );
   localStorage.setItem("subscribeList", JSON.stringify(removedList));
+  modal.classList.add("hidden");
+  modalOverlay.classList.add("hidden");
+  renderToast(`${brandData[brandId].brandName}을(를) 구독해지하였습니다`);
+
+  // 구독 해지를 적용한 화면을 바로 렌더링 해주어야 함
+  if (cateIdx === -1) fieldTab("subscribe");
+  else allNews(cateIdx, brandIdx);
+};
+
+/**
+ * 구독 해지 모달에서 아니오를 클릭 시
+ * 모달을 hidden으로 바꾸는 함수
+ */
+const handleClickNoRemove = (modal, modalOverlay) => {
+  modal.classList.add("hidden");
+  modalOverlay.classList.add("hidden");
 };

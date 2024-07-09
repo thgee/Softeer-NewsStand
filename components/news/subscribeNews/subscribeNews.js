@@ -70,5 +70,7 @@ export const subscribeNews = (brandIdx) => {
  */
 const renderNoSubscribe = (pressNews) => {
   pressNews.classList.add("hidden");
+  pressNews.dataset.brandIdx = -1;
+  pressNews.dataset.brandId = -1;
   document.querySelector(".no-subscribe").classList.remove("hidden");
 };

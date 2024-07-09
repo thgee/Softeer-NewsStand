@@ -36,7 +36,7 @@ const handleClickSubscribeBtn = () => {
   // 화면에 구독여부를 즉시 반영하기 위해 뉴스데이터 리렌더링
   allNews(cateIdx, brandIdx);
 
-  renderToast(`${brandData[brandId].brandName}을 구독하였습니다`);
+  renderToast(`${brandData[brandId].brandName}을(를) 구독하였습니다`);
 };
 
 /**
