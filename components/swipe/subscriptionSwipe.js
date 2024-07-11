@@ -1,5 +1,6 @@
 import { brandData } from "../../data/brandData.js";
 import { getSubscribeList } from "../../util/getSubscribeList.js";
+import { renderProgressBar } from "../fieldTab/progressBar.js";
 import { subscribeNews } from "../news/subscriptionNews/subscriptionNews.js";
 import { handleClickAllLeftBtn, handleClickAllRightBtn } from "./allSwipe.js";
 
@@ -36,8 +37,12 @@ export const handleClickSubscribeLeftBtn = () => {
   fieldTabBtns[curBrandIdx].classList.remove("active");
   fieldTabBtns[prevBrandIdx].classList.add("active");
 
+  updateArrowIcon(fieldTabBtns, curBrandIdx, prevBrandIdx);
+
   // 뉴스 렌더링
   subscribeNews(prevBrandIdx);
+
+  renderProgressBar();
 };
 
 export const handleClickSubscribeRightBtn = () => {
@@ -54,13 +59,26 @@ export const handleClickSubscribeRightBtn = () => {
   let curBrandIdx = Number(brandIdx);
 
   // 스와이프 한 후의 페이지를 계산
-  let prevBrandIdx =
+  let nextBrandIdx =
     curBrandIdx === subscribeList.length - 1 ? 0 : curBrandIdx + 1;
 
   // 필드 버튼 active 처리
   fieldTabBtns[curBrandIdx].classList.remove("active");
-  fieldTabBtns[prevBrandIdx].classList.add("active");
+  fieldTabBtns[nextBrandIdx].classList.add("active");
+
+  updateArrowIcon(fieldTabBtns, curBrandIdx, nextBrandIdx);
 
   // 뉴스 렌더링
-  subscribeNews(prevBrandIdx);
+  subscribeNews(nextBrandIdx);
+
+  renderProgressBar();
+};
+
+const updateArrowIcon = (fieldTabBtns, curBrandIdx, followingBrandIdx) => {
+  let curArrow = fieldTabBtns[curBrandIdx].querySelector(".arrow");
+  let followingArrow = fieldTabBtns[followingBrandIdx].querySelector(".arrow");
+
+  // 카테고리가 변했다면 hidden 처리
+  curArrow.classList.add("hidden");
+  followingArrow.classList.remove("hidden");
 };

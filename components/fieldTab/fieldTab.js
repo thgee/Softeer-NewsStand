@@ -3,6 +3,7 @@ import { brandData } from "../../data/brandData.js";
 import { getSubscribeList } from "../../util/getSubscribeList.js";
 import { allNews } from "../news/allNews/allNews.js";
 import { subscribeNews } from "../news/subscriptionNews/subscriptionNews.js";
+import { renderProgressBar } from "./progressBar.js";
 
 /**
  *
@@ -58,6 +59,7 @@ const renderAllFieldTab = (fieldTab) => {
        newsData.data.length
      }</span>
     </div>
+    <div class="progress-bar hidden"></div>
   </button>`,
     ""
   );
@@ -78,6 +80,11 @@ const renderSubscribeFieldTab = (fieldTab) => {
         brandIdx === 0 ? "active" : ""
       }" data-brand-idx=${brandIdx} data-brand-id=${Number(brandId)}>
         ${brandData[brandId].brandName}
+        <img src = "../asset/icons/arrow.svg" class = "arrow ${
+          brandIdx === 0 ? "" : "hidden"
+        }" ></img>
+        <div class="progress-bar hidden"></div>
+
       </button>
     `;
     fieldTab.innerHTML += fieldTabBtn;
@@ -107,6 +114,8 @@ const handleClickAllField = (event) => {
 
   // 선택된 언론사 뉴스 렌더링
   allNews(btn.dataset.cateIdx, btn.dataset.brandIdx);
+
+  renderProgressBar();
 };
 
 const handleClickSubscribeField = (event) => {
@@ -116,11 +125,17 @@ const handleClickSubscribeField = (event) => {
   // 모든 버튼에서 active 클래스 제거
   document.querySelectorAll(".field-tab-btn").forEach((btn) => {
     btn.classList.remove("active");
+    btn.querySelector(".arrow").classList.add("hidden");
   });
 
   // 클릭된 버튼에 active 클래스 추가
   btn.classList.add("active");
 
+  // 화살표 아이콘 hidden 처리
+  btn.querySelector(".arrow").classList.remove("hidden");
+
   // 선택된 언론사 뉴스 렌더링
   subscribeNews(btn.dataset.brandIdx);
+
+  renderProgressBar();
 };

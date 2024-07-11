@@ -6,6 +6,7 @@ import {
   handleClickSubscribeLeftBtn,
   handleClickSubscribeRightBtn,
 } from "./subscriptionSwipe.js";
+import { renderProgressBar } from "../fieldTab/progressBar.js";
 
 // 전체 언론사 탭에서의 스와이프
 export const allSwipe = () => {
@@ -40,6 +41,9 @@ export const handleClickAllLeftBtn = () => {
 
   // 뉴스 렌더링
   allNews(prevCateIdx, prevBrandIdx);
+
+  // progressBar 다시 실행
+  renderProgressBar();
 };
 
 export const handleClickAllRightBtn = () => {
@@ -62,6 +66,9 @@ export const handleClickAllRightBtn = () => {
 
   // 뉴스 렌더링
   allNews(nextCateIdx, nextBrandIdx);
+
+  // progressBar 다시 실행
+  renderProgressBar();
 };
 
 // left swipe 시 다음 페이지의 cateIdx, brandIdx를 반환
@@ -110,7 +117,6 @@ const updateBrandPageWrap = (
   // 이전에 active 였던 tab -> hidden
   let curBrandPageWrap =
     fieldTabBtns[curCateIdx].querySelector(".brand-page-wrap");
-  let curBrandPage = curBrandPageWrap.querySelector(".cur-brand-page");
 
   let followingBrandPageWrap =
     fieldTabBtns[followingCateIdx].querySelector(".brand-page-wrap");
