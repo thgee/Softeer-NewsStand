@@ -1,7 +1,7 @@
 @import url("./style/variable.css");
 @import url("./style/common.css");
 @import url("./style/reset.css");
-@import url("./components/subscriptionSwitchBtn/style.css");
+@import url("./components/viewSwitch/style.css");
 @import url("./components/fieldTab/style.css");
 @import url("./components/subscription/style.css");
 @import url("./components/toast/style.css");
@@ -10,18 +10,6 @@
 .news-stand {
   width: 930px;
   margin-top: 100px;
-}
-
-.tab-and-viewer {
-  .list-view-btn,
-  .grid-view-btn {
-    filter: invert(56%) sepia(12%) saturate(253%) hue-rotate(157deg)
-      brightness(100%) contrast(90%);
-    &:hover {
-      filter: invert(32%) sepia(91%) saturate(1041%) hue-rotate(206deg)
-        brightness(89%) contrast(89%);
-    }
-  }
 }
 
 .news-list {

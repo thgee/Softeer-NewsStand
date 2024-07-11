@@ -44,7 +44,7 @@ const renderRollingBar = (rollingBarIdx) => {
   const startInterval = () => {
     intervalId = setInterval(
       () => setCurrentNews(i++, currentNewsBox1, currentNewsBox2, newsData),
-      2000
+      3000
     );
   };
 
