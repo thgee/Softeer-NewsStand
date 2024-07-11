@@ -10,6 +10,12 @@ import { renderProgressBar } from "./progressBar.js";
  * @param {"allTabPress" | "subscribeTabPress"} mode
  */
 export const fieldTab = (mode) => {
+  const newsGrid = document.querySelector(".news-grid");
+  const newsList = document.querySelector(".news-list");
+
+  newsGrid.classList.add("hidden");
+  newsList.classList.remove("hidden");
+
   const fieldTab = document.querySelector(".field-tab");
 
   fieldTab.innerHTML = "";

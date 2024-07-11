@@ -1,0 +1,24 @@
+.news-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 930px;
+
+  &.hidden {
+    display: none;
+  }
+
+  .grid-item {
+    width: 154.6px;
+    height: 96.25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    border: 1px solid var(--border-default);
+
+    &:hover {
+      background-color: var(--surface-alt);
+    }
+  }
+}

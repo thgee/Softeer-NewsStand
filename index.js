@@ -6,7 +6,6 @@ import { setView, viewSwitch } from "./components/viewSwitch/viewSwitch.js";
 
 header();
 setView();
-viewSwitch();
 addSubscribe();
 removeSubscribe();
 initRollingBar();

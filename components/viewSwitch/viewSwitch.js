@@ -1,14 +1,24 @@
 import { fieldTab } from "../fieldTab/fieldTab.js";
 import { stopProgress } from "../fieldTab/progressBar.js";
-import { allSwipe } from "../swipe/allSwipe.js";
-import { subscribeSwipe } from "../swipe/subscriptionSwipe.js";
+import { renderGrid } from "../grid/grid.js";
+import {
+  allSwipe,
+  handleClickAllLeftBtn,
+  handleClickAllRightBtn,
+} from "../swipe/allSwipe.js";
+import {
+  handleClickSubscribeLeftBtn,
+  handleClickSubscribeRightBtn,
+  subscribeSwipe,
+} from "../swipe/subscriptionSwipe.js";
 
 export const viewSwitch = () => {
   const { tab, view } = document.querySelector(".tab-and-viewer").dataset;
-
+  const leftBtn = document.querySelector(".left-btn");
+  const rightBtn = document.querySelector(".right-btn");
   if (view === "list") {
     if (tab === "all") {
-      // 전체 언론사 탭 버튼 렌더링
+      // 전체 언론사 탭 버튼
       fieldTab("allTabPress");
 
       // 전체 언론사일때의 스와이프 기능 작동
@@ -25,8 +35,19 @@ export const viewSwitch = () => {
 
   if (view === "grid") {
     stopProgress();
+
+    // 화살표 버튼 이벤트 해제
+    leftBtn.removeEventListener("click", handleClickSubscribeLeftBtn);
+    rightBtn.removeEventListener("click", handleClickSubscribeRightBtn);
+    leftBtn.removeEventListener("click", handleClickAllLeftBtn);
+    rightBtn.removeEventListener("click", handleClickAllRightBtn);
+    handleClickAllLeftBtn;
+    // 그리드 전체 언론사
     if (tab === "all") {
+      renderGrid();
     }
+
+    // 그리드 구독한 언론사
     if (tab === "subscription") {
     }
   }
@@ -64,6 +85,10 @@ export const setView = () => {
   gridViewBtn.addEventListener("click", () =>
     handleClickGridViewBtn(tabAndViewer, listViewBtn, gridViewBtn)
   );
+
+  // 초기화면
+  allBrandTabBtn.click();
+  listViewBtn.click();
 };
 
 // 모든 언론사 버튼 클릭
@@ -102,7 +127,6 @@ const handleClickListViewBtn = (tabAndViewer, listViewBtn, gridViewBtn) => {
   listViewBtn.classList.add("active");
 
   tabAndViewer.dataset.view = "list";
-
   viewSwitch();
 };
 

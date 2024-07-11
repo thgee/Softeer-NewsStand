@@ -6,6 +6,7 @@
 @import url("./components/subscription/style.css");
 @import url("./components/toast/style.css");
 @import url("./components/rollingBar/style.css");
+@import url("./components/grid/style.css");
 
 .news-stand {
   width: 930px;
@@ -45,4 +46,15 @@
     right: -70px;
     top: 50%;
   }
+}
+
+.main-news-thumbnail {
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.main-news-thumbnail-wrap {
+  overflow: hidden;
 }
