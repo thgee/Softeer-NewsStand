@@ -90,9 +90,9 @@ export const cateData = [
         ],
       },
       {
-        brandId: 3,
-        brand: "한국농어촌방송",
-        brandImg: `../asset/darkBrandLogo/brand${0}.svg`,
+        brandId: 2,
+        brand: "헤럴드경제",
+        brandImg: `../asset/darkBrandLogo/brand${2}.svg`,
         editDate: "2023.02.10. 18:27",
         mainNews: {
           title:
@@ -139,8 +139,8 @@ export const cateData = [
     data: [
       {
         brandId: 3,
-        brand: "한국농어촌방송",
-        brandImg: `../asset/darkBrandLogo/brand${0}.svg`,
+        brand: "sbs Biz",
+        brandImg: `../asset/darkBrandLogo/brand${3}.svg`,
         editDate: "2023.02.10. 18:27",
         mainNews: {
           title:
@@ -180,9 +180,9 @@ export const cateData = [
         ],
       },
       {
-        brandId: 3,
-        brand: "한국농어촌방송",
-        brandImg: `../asset/darkBrandLogo/brand${0}.svg`,
+        brandId: 5,
+        brand: "아시아경제",
+        brandImg: `../asset/darkBrandLogo/brand${5}.svg`,
         editDate: "2023.02.10. 18:27",
         mainNews: {
           title:
@@ -222,9 +222,9 @@ export const cateData = [
         ],
       },
       {
-        brandId: 0,
-        brand: "한국농어촌방송",
-        brandImg: `../asset/darkBrandLogo/brand${0}.svg`,
+        brandId: 4,
+        brand: "세계일보",
+        brandImg: `../asset/darkBrandLogo/brand${4}.svg`,
         editDate: "2023.02.10. 18:27",
         mainNews: {
           title:
@@ -272,7 +272,7 @@ export const cateData = [
     data: [
       {
         brandId: 3,
-        brand: "한국농어촌방송",
+        brand: "sbs Biz",
         brandImg: `../asset/darkBrandLogo/brand${3}.svg`,
         editDate: "2023.02.10. 18:27",
         mainNews: {
@@ -313,9 +313,9 @@ export const cateData = [
         ],
       },
       {
-        brandId: 0,
-        brand: "한국농어촌방송",
-        brandImg: `../asset/darkBrandLogo/brand${0}.svg`,
+        brandId: 2,
+        brand: "헤럴드경제",
+        brandImg: `../asset/darkBrandLogo/brand${2}.svg`,
         editDate: "2023.02.10. 18:27",
         mainNews: {
           title:

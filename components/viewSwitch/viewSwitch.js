@@ -1,6 +1,15 @@
 import { fieldTab } from "../fieldTab/fieldTab.js";
 import { stopProgress } from "../fieldTab/progressBar.js";
-import { renderGrid } from "../grid/grid.js";
+import {
+  handleClickAllLeftBtnGrid,
+  handleClickAllRightBtnGrid,
+  renderGridAll,
+} from "../grid/gridAll.js";
+import {
+  handleClickSubscriptionLeftBtnGrid,
+  handleClickSubscriptionRightBtnGrid,
+  renderGridSubscription,
+} from "../grid/gridSubscription.js";
 import {
   allSwipe,
   handleClickAllLeftBtn,
@@ -16,7 +25,16 @@ export const viewSwitch = () => {
   const { tab, view } = document.querySelector(".tab-and-viewer").dataset;
   const leftBtn = document.querySelector(".left-btn");
   const rightBtn = document.querySelector(".right-btn");
+
+  leftBtn.classList.remove("hidden");
+  rightBtn.classList.remove("hidden");
+
   if (view === "list") {
+    leftBtn.removeEventListener("click", handleClickAllLeftBtnGrid);
+    rightBtn.removeEventListener("click", handleClickAllRightBtnGrid);
+    leftBtn.removeEventListener("click", handleClickSubscriptionLeftBtnGrid);
+    rightBtn.removeEventListener("click", handleClickSubscriptionRightBtnGrid);
+
     if (tab === "all") {
       // 전체 언론사 탭 버튼
       fieldTab("allTabPress");
@@ -44,11 +62,12 @@ export const viewSwitch = () => {
     handleClickAllLeftBtn;
     // 그리드 전체 언론사
     if (tab === "all") {
-      renderGrid();
+      renderGridAll();
     }
 
     // 그리드 구독한 언론사
     if (tab === "subscription") {
+      renderGridSubscription();
     }
   }
 };

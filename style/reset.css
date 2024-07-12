@@ -19,3 +19,7 @@ button {
   background: none;
   border: none;
 }
+
+body {
+  transition: all 0.5s;
+}
